@@ -1,0 +1,24 @@
+@import '../variables.scss';
+
+.Slider {
+  background-color: $color-white;
+  padding: 2rem 2.5rem;
+  overflow-x: hidden;
+  width: $sliderWidth;
+  max-width: $sliderWidth;
+  @include positionCenter;
+  @include borderStyle;
+
+  &__Heading {
+    font-size: 1.5rem;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+  }
+
+  &__Wrapper {
+    @include flexCenter;
+    // overflow-x: hidden;
+    transition: transform 0.4s ease-out;
+  }
+}

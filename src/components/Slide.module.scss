@@ -1,0 +1,13 @@
+@import '../variables.scss';
+
+.Slide {
+  padding: 1rem;
+  align-self: stretch;
+  min-width: calc((#{$sliderWidth} - 8rem) / 4);
+  @include borderStyle;
+
+  &__Image {
+    display: block;
+    width: 100%;
+  }
+}
