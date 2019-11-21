@@ -2,12 +2,13 @@
 
 .Slider {
   background-color: $color-white;
-  padding: 2rem 2.5rem;
-  overflow-x: hidden;
+  padding: 2rem 3rem;
   width: $sliderWidth;
   max-width: $sliderWidth;
-  @include positionCenter;
+  margin: 10rem auto 0 auto;
   @include borderStyle;
+  position: relative;
+  height: 50rem;
 
   &__Heading {
     font-size: 1.5rem;
@@ -17,8 +18,14 @@
   }
 
   &__Wrapper {
-    @include flexCenter;
-    // overflow-x: hidden;
-    transition: transform 0.4s ease-out;
+    position: relative;
+    height: 100%;
+    overflow: hidden;
+  }
+  &__List {
+    display: flex;
+    list-style: none;
+    transition: transform 300ms cubic-bezier(0.455, 0.03, 0.515, 0.955);
+    position: absolute;
   }
 }

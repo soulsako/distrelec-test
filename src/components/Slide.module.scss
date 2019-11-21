@@ -1,10 +1,11 @@
 @import '../variables.scss';
 
 .Slide {
+  display: block;
   padding: 1rem;
   align-self: stretch;
-  min-width: calc((#{$sliderWidth} - 8rem) / 4);
-  @include borderStyle;
+  min-width: 20rem;
+  // @include borderStyle;
 
   &__Image {
     display: block;

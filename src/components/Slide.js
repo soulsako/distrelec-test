@@ -8,12 +8,13 @@ const Slide = ({
   url,
   numberOfItems,
   isLast,
+  productImageAltText,
 }) => {
   return (
-    <div className={Styles.Slide} style={{ marginRight: isLast ? '0rem' : '1rem' }}>
-      <img src={productImageUrl} className={Styles.Slide__Image} alt={name} />
+    <a className={Styles.Slide} href={url}>
+      <img src={productImageUrl} className={Styles.Slide__Image} alt={productImageAltText} />
       <div className={Styles.Slide__Title}>{name}</div>
-    </div>
+    </a>
   );
 };
 

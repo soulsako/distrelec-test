@@ -8,19 +8,6 @@ $sliderWidth: 110rem;
 
 /*===========MIXINS===========*/
 
-@mixin positionCenter {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
-
-@mixin flexCenter {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
 @mixin borderStyle {
   border: 1px solid $color-light-grey;
   border-radius: 3px;
