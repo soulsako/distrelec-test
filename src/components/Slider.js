@@ -7,29 +7,39 @@ import RightArrow from './RightArrow';
 
 class Slider extends Component {
   state = {
-    currentIndex: 0,
+    currentSlides: 4,
     translateValueX: 0,
   };
 
   goToPrevSlide = () => {
-    console.log('====================================');
-    console.log('Left Arrow clicked!');
-    console.log('====================================');
-  };
-
-  goToNextSlide = () => {
-    const { currentIndex } = this.state;
+    const { currentSlides } = this.state;
     const { numberOfItems } = slideDate;
-    if (currentIndex === numberOfItems - 1) {
+    if (currentSlides === Number(numberOfItems)) {
       return this.setState({
-        currentIndex: 0,
+        currentSlides: 4,
         translateValueX: 0,
       });
     }
 
     this.setState(prevState => ({
-      currentIndex: prevState.currentIndex + 1,
-      translateValueX: prevState.translateValueX + -(100 / numberOfItems),
+      currentSlides: prevState.currentSlides + 1,
+      translateValueX: prevState.translateValueX + -(100 / Number(numberOfItems)),
+    }));
+  };
+
+  goToNextSlide = () => {
+    const { currentSlides } = this.state; // 0
+    const { numberOfItems } = slideDate; // 10
+    if (currentSlides === Number(numberOfItems)) {
+      return this.setState({
+        currentSlides: 4,
+        translateValueX: 0,
+      });
+    }
+
+    this.setState(prevState => ({
+      currentSlides: prevState.currentSlides + 1,
+      translateValueX: prevState.translateValueX + -(100 / Number(numberOfItems)),
     }));
   };
 

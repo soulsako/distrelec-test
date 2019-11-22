@@ -1,5 +1,5 @@
 /*===========COLORS===========*/
-$color-primary: '#4bd4b0';
+$color-primary: #4bd4b0;
 $color-white: #fff;
 $color-light-grey: #f7f7f7;
 
@@ -12,4 +12,10 @@ $sliderWidth: 110rem;
   border: 1px solid $color-light-grey;
   border-radius: 3px;
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.15);
+}
+
+@mixin flexCenter {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }

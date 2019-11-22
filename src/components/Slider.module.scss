@@ -8,13 +8,13 @@
   margin: 10rem auto 0 auto;
   @include borderStyle;
   position: relative;
-  height: 50rem;
+  height: 40rem;
 
   &__Heading {
     font-size: 1.5rem;
     letter-spacing: 0.5px;
     text-transform: uppercase;
-    margin-bottom: 1rem;
+    margin-bottom: 3rem;
   }
 
   &__Wrapper {
