@@ -7,6 +7,8 @@ const Slide = ({
   productImageUrl,
   url,
   productImageAltText,
+  left,
+  transition,
 }) => {
   const formatCurrency = () => {
     if (currency === 'GBP') return '£';
@@ -15,7 +17,14 @@ const Slide = ({
     else return currency;
   };
   return (
-    <a className={Styles.Slide} href={url} style={{ borderRight: '1px solid #f7f7f7' }}>
+    <a
+      className={Styles.Slide}
+      href={url}
+      style={{
+        left: `${left}rem`,
+        transition: transition ? 'left 600ms cubic-bezier(0.455, 0.03, 0.515, 0.955)' : null,
+      }}
+    >
       <figure className={Styles.Slide__Figure}>
         <img src={productImageUrl} className={Styles.Slide__Image} alt={productImageAltText} />
       </figure>
