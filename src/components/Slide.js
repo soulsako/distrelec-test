@@ -9,6 +9,7 @@ const Slide = ({
   productImageAltText,
   left,
   transition,
+  zIndex,
 }) => {
   const formatCurrency = () => {
     if (currency === 'GBP') return '£';
@@ -22,7 +23,8 @@ const Slide = ({
       href={url}
       style={{
         left: `${left}rem`,
-        transition: transition ? 'left 600ms cubic-bezier(0.455, 0.03, 0.515, 0.955)' : null,
+        transition: transition ? 'left 400ms cubic-bezier(0.455, 0.03, 0.515, 0.955)' : null,
+        zIndex: zIndex ? zIndex : null,
       }}
     >
       <figure className={Styles.Slide__Figure}>
