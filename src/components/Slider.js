@@ -56,11 +56,11 @@ class Slider extends Component {
 
   resetSlideOutOfView = (numberOfItems, carouselData) => {
     const index = carouselData.findIndex(curr => curr.left === -26);
-    const zeroSlide = { ...carouselData[index] };
-    zeroSlide.left = numberOfItems * 26;
-    zeroSlide.transition = false;
-    zeroSlide.itemPositionOneBased = numberOfItems - 1;
-    carouselData[index] = zeroSlide;
+    const outOfViewSlide = { ...carouselData[index] };
+    outOfViewSlide.left = (numberOfItems - 1) * 26;
+    outOfViewSlide.transition = false;
+    outOfViewSlide.itemPositionOneBased = numberOfItems - 1;
+    carouselData[index] = outOfViewSlide;
     this.setState({ carouselData });
   };
 
@@ -74,32 +74,36 @@ class Slider extends Component {
   /*=================PREVIOUS SLIDE================*/
   prevSlideHandler = () => {
     const { carouselData, numberOfItems } = { ...this.state };
+    //Move slide at 0 to position 1 (to the right), then move slide at position 9 to the left (-26)
     carouselData.forEach(slide => {
-      // Slide is out of view
-      if (slide.itemPositionOneBased === numberOfItems) {
+      if (slide.left === 0) {
+        slide.left = 26;
+        slide.itemPositionOneBased = slide.itemPositionOneBased + 1;
+      } else if (slide.left === (numberOfItems - 1) * 26) {
         slide.transition = false;
         slide.left = -26;
-
         setTimeout(() => {
-          this.prevResetSlideOutOfView(slide, numberOfItems);
+          this.prevResetSlideOutOfView(carouselData);
         }, 250);
-      } else if (slide.itemPositionOneBased < numberOfItems) {
+      } else {
         this.prevSlideInView(slide);
       }
     });
-
-    this.setState({ carouselData, loading: false });
+    this.setState({ carouselData });
   };
 
-  prevResetSlideOutOfView = slide => {
-    slide.left = 0;
-    slide.transition = true;
-    slide.itemPositionOneBased = 1;
-    return slide;
+  prevResetSlideOutOfView = carouselData => {
+    const index = carouselData.findIndex(curr => curr.left === -26);
+    const outOfViewSlide = { ...carouselData[index] };
+    outOfViewSlide.left = 0;
+    outOfViewSlide.transition = true;
+    outOfViewSlide.itemPositionOneBased = 0;
+    carouselData[index] = outOfViewSlide;
+    this.setState({ carouselData });
   };
 
   prevSlideInView = slide => {
-    slide.left = (slide.itemPositionOneBased - 1) * 26;
+    slide.left = slide.left + 26;
     slide.itemPositionOneBased = slide.itemPositionOneBased + 1;
     return slide;
   };
@@ -111,7 +115,9 @@ class Slider extends Component {
   render() {
     const { carouselData, loading } = this.state;
     if (!carouselData || loading) return <p className={Styles.Loader}>Loading...</p>;
-
+    console.log('====================================');
+    console.log('CarouselData', carouselData);
+    console.log('====================================');
     return (
       <div
         className={Styles.Slider}

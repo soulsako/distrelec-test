@@ -23,7 +23,7 @@ const Slide = ({
       href={url}
       style={{
         left: `${left}rem`,
-        transition: transition ? 'left 400ms cubic-bezier(0.455, 0.03, 0.515, 0.955)' : null,
+        transition: transition ? 'left 300ms cubic-bezier(0.455, 0.03, 0.515, 0.955)' : null,
         zIndex: zIndex ? zIndex : null,
       }}
     >
